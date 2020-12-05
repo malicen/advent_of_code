@@ -42,3 +42,26 @@ def find_bad_passwords():
             if count >= mymin and count <= mymax:
                 finalcount += 1
     return finalcount
+
+'''
+Day 2
+'''
+def find_bad_passwords_again():
+    lines = []
+    finalcount = 0
+    with open("day2_input.txt") as file:
+        for line in file.readlines():
+            values = line.split()
+            index_1 = int(values[0].split('-')[0]) - 1
+            index_2 = int(values[0].split('-')[1]) - 1
+            myletter = values[1][0]
+            string = values[2]
+
+            count = 0
+            if index_1 < len(string) and string[index_1] == myletter:
+                count += 1
+            if index_2 < len(string) and string[index_2] == myletter:
+                count += 1
+            if count == 1:
+                finalcount += 1
+    return finalcount
